@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Appointment Scheduling</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <img src="public\Capmindsimg.png" alt="Capminds" />
+        </div>
+        <button class="primary" id="openModal">+ Book Appointment</button>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar" id="sidebar">
+          <button class="collapse" id="collapseBtn" aria-label="Collapse sidebar">&laquo;</button>
+          <nav class="nav">
+            <a class="nav-item active" href="#">
+              <span class="nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" role="presentation">
+                  <rect x="3" y="4" width="14" height="13" rx="2"></rect>
+                  <path d="M3 7h14"></path>
+                  <path d="M7 3v3M13 3v3"></path>
+                </svg>
+              </span>
+              <span class="nav-text">Calendar</span>
+            </a>
+            <a class="nav-item" href="#">
+              <span class="nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" role="presentation">
+                  <rect x="3" y="3" width="6" height="6" rx="1"></rect>
+                  <rect x="11" y="3" width="6" height="6" rx="1"></rect>
+                  <rect x="3" y="11" width="6" height="6" rx="1"></rect>
+                  <rect x="11" y="11" width="6" height="6" rx="1"></rect>
+                </svg>
+              </span>
+              <span class="nav-text">Dashboard</span>
+            </a>
+          </nav>
+        </aside>
+
+        <main class="content">
+          <section class="calendar-card">
+            <div class="calendar-header">
+              <div class="nav-left">
+                <button class="icon" id="prevMonth" aria-label="Previous month">&#8249;</button>
+                <div class="month" id="monthLabel">January 2023</div>
+                <button class="icon" id="nextMonth" aria-label="Next month">&#8250;</button>
+              </div>
+              <div class="nav-right">
+                <button class="ghost" id="todayBtn">Today</button>
+                <select class="select" aria-label="View">
+                  <option>Month</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="calendar-grid">
+              <div class="weekday">Sunday</div>
+              <div class="weekday">Monday</div>
+              <div class="weekday">Tuesday</div>
+              <div class="weekday">Wednesday</div>
+              <div class="weekday">Thursday</div>
+              <div class="weekday">Friday</div>
+              <div class="weekday">Saturday</div>
+            </div>
+
+            <div class="calendar-days" id="calendarDays" aria-live="polite"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Schedule Appointment</h2>
+          <button class="icon" id="closeModal" aria-label="Close">&times;</button>
+        </div>
+        <form id="appointmentForm" novalidate>
+          <div class="row">
+            <label>
+              Patient Name
+              <div class="field has-end">
+                <span class="field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <circle cx="10" cy="6" r="3"></circle>
+                    <path d="M4 16c0-2.8 2.7-5 6-5s6 2.2 6 5"></path>
+                  </svg>
+                </span>
+                <input type="text" name="patientName" placeholder="Patient Name" required />
+                <span class="field-icon end" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <path d="M6 8l4 4 4-4"></path>
+                  </svg>
+                </span>
+              </div>
+              <span class="error" data-error-for="patientName"></span>
+            </label>
+            <label>
+              Doctor Name
+              <div class="field has-end">
+                <span class="field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <circle cx="10" cy="6" r="3"></circle>
+                    <path d="M4 16c0-2.8 2.7-5 6-5s6 2.2 6 5"></path>
+                  </svg>
+                </span>
+                <input type="text" name="doctorName" placeholder="Doctor Name" required />
+                <span class="field-icon end" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <path d="M6 8l4 4 4-4"></path>
+                  </svg>
+                </span>
+              </div>
+              <span class="error" data-error-for="doctorName"></span>
+            </label>
+          </div>
+          <div class="row">
+            <label>
+              Hospital Name
+              <div class="field has-end">
+                <span class="field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <path d="M10 3c-2.2 0-4 1.8-4 4 0 3.2 4 7 4 7s4-3.8 4-7c0-2.2-1.8-4-4-4z"></path>
+                    <circle cx="10" cy="7" r="1.5"></circle>
+                  </svg>
+                </span>
+                <input type="text" name="hospitalName" placeholder="Hospital Name" required />
+                <span class="field-icon end" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <path d="M6 8l4 4 4-4"></path>
+                  </svg>
+                </span>
+              </div>
+              <span class="error" data-error-for="hospitalName"></span>
+            </label>
+            <label>
+              Specialty
+              <div class="field has-end">
+                <span class="field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <path d="M8 3h4v3h3v4h-3v3H8v-3H5V6h3z"></path>
+                    <circle cx="10" cy="16" r="2"></circle>
+                  </svg>
+                </span>
+                <input type="text" name="specialty" placeholder="Specialty" required />
+                <span class="field-icon end" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <path d="M6 8l4 4 4-4"></path>
+                  </svg>
+                </span>
+              </div>
+              <span class="error" data-error-for="specialty"></span>
+            </label>
+          </div>
+          <div class="row">
+            <label>
+              Select Date
+              <div class="field has-end">
+                <span class="field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <rect x="3" y="4" width="14" height="13" rx="2"></rect>
+                    <path d="M3 7h14"></path>
+                    <path d="M7 3v3M13 3v3"></path>
+                  </svg>
+                </span>
+                <input type="date" name="appointmentDate" required />
+                <span class="field-icon end" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <rect x="3" y="4" width="14" height="13" rx="2"></rect>
+                    <path d="M3 7h14"></path>
+                  </svg>
+                </span>
+              </div>
+              <span class="error" data-error-for="appointmentDate"></span>
+            </label>
+            <label>
+              Select Time
+              <div class="field has-end">
+                <span class="field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <circle cx="10" cy="10" r="7"></circle>
+                    <path d="M10 6v5l3 2"></path>
+                  </svg>
+                </span>
+                <input type="time" name="appointmentTime" required />
+                <span class="field-icon end" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" role="presentation">
+                    <circle cx="10" cy="10" r="7"></circle>
+                    <path d="M10 6v5l3 2"></path>
+                  </svg>
+                </span>
+              </div>
+              <span class="error" data-error-for="appointmentTime"></span>
+            </label>
+          </div>
+          <label class="full-row">
+            Reason
+            <textarea name="reason" rows="2" placeholder=""></textarea>
+          </label>
+          <div class="actions">
+            <button type="button" class="ghost" id="cancelModal">Cancel</button>
+            <button type="submit" class="primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
