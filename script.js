@@ -11,9 +11,122 @@ const form = document.getElementById("appointmentForm");
 const collapseBtn = document.getElementById("collapseBtn");
 const sidebar = document.getElementById("sidebar");
 const layout = document.querySelector(".layout");
+const dateTimeInputs = form.querySelectorAll("[data-input-type]");
+const navItems = document.querySelectorAll(".nav-item[data-view]");
+const viewPanels = document.querySelectorAll("[data-view-panel]");
+const patientSearch = document.getElementById("patientSearch");
+const doctorSearch = document.getElementById("doctorSearch");
+const startDate = document.getElementById("startDate");
+const endDate = document.getElementById("endDate");
+const updateFilters = document.getElementById("updateFilters");
+const appointmentsBody = document.getElementById("appointmentsBody");
 
 let current = new Date();
 let selectedDate = null;
+
+const appointments = [
+  {
+    patient: "Henry James",
+    doctor: "James Marry",
+    hospital: "Salus Center (General Hospital)",
+    specialty: "Dermatology",
+    date: "18/12/2025",
+    time: "12:00 AM - 12:15 AM",
+  },
+  {
+    patient: "Henry James",
+    doctor: "James Marry",
+    hospital: "Ultracare (General Hospital)",
+    specialty: "Dermatology",
+    date: "18/12/2025",
+    time: "12:00 AM - 12:15 AM",
+  },
+];
+
+function parseDateDMY(value) {
+  if (!value) return null;
+  const parts = value.split("/");
+  if (parts.length !== 3) return null;
+  const [day, month, year] = parts.map(Number);
+  if (!day || !month || !year) return null;
+  return new Date(year, month - 1, day);
+}
+
+function renderTable(data) {
+  if (!appointmentsBody) return;
+  const minRows = 10;
+  const rows = data
+    .map(
+      (item) => `
+        <div class="appointments-row" role="row">
+          <div role="cell">${item.patient}</div>
+          <div role="cell">${item.doctor}</div>
+          <div role="cell">${item.hospital}</div>
+          <div role="cell">${item.specialty}</div>
+          <div role="cell">${item.date}</div>
+          <div role="cell">${item.time}</div>
+          <div role="cell">&nbsp;</div>
+          <div role="cell">&nbsp;</div>
+          <div role="cell" class="appointments-actions">
+            <button class="icon-btn icon-btn--edit" type="button" aria-label="Edit appointment">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 20h4l10-10-4-4L4 16v4z" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                <path d="M14 6l4 4" stroke="currentColor" fill="none" stroke-width="1.6"/>
+              </svg>
+            </button>
+            <button class="icon-btn icon-btn--delete" type="button" aria-label="Delete appointment">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h16" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                <path d="M9 7V5h6v2" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                <path d="M7 7l1 12h8l1-12" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                <path d="M10 11v6M14 11v6" stroke="currentColor" fill="none" stroke-width="1.6"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      `
+    )
+    .join("");
+
+  const emptyRows = Math.max(0, minRows - data.length);
+  const emptyMarkup = Array.from({ length: emptyRows })
+    .map(
+      () => `
+        <div class="appointments-row appointments-row--empty" role="row">
+          <div role="cell">&nbsp;</div>
+          <div role="cell">&nbsp;</div>
+          <div role="cell">&nbsp;</div>
+          <div role="cell">&nbsp;</div>
+          <div role="cell">&nbsp;</div>
+          <div role="cell">&nbsp;</div>
+          <div role="cell">&nbsp;</div>
+          <div role="cell">&nbsp;</div>
+          <div role="cell" class="appointments-actions">&nbsp;</div>
+        </div>
+      `
+    )
+    .join("");
+
+  appointmentsBody.innerHTML = rows + emptyMarkup;
+}
+
+function filterAppointments() {
+  const patientValue = patientSearch?.value.trim().toLowerCase() || "";
+  const doctorValue = doctorSearch?.value.trim().toLowerCase() || "";
+  const startValue = startDate?.value ? new Date(startDate.value) : null;
+  const endValue = endDate?.value ? new Date(endDate.value) : null;
+
+  const filtered = appointments.filter((item) => {
+    const matchesPatient = item.patient.toLowerCase().includes(patientValue);
+    const matchesDoctor = item.doctor.toLowerCase().includes(doctorValue);
+    const itemDate = parseDateDMY(item.date);
+    const afterStart = !startValue || (itemDate && itemDate >= startValue);
+    const beforeEnd = !endValue || (itemDate && itemDate <= endValue);
+    return matchesPatient && matchesDoctor && afterStart && beforeEnd;
+  });
+
+  renderTable(filtered);
+}
 
 function startOfMonth(date) {
   return new Date(date.getFullYear(), date.getMonth(), 1);
@@ -36,7 +149,10 @@ function renderCalendar() {
     day: "numeric",
     year: "numeric",
   });
-  monthLabel.textContent = label;
+  const monthText = monthLabel.querySelector(".month-text");
+  if (monthText) {
+    monthText.textContent = label;
+  }
 
   const prevMonthEnd = new Date(current.getFullYear(), current.getMonth(), 0);
   for (let i = startDay; i > 0; i -= 1) {
@@ -175,7 +291,50 @@ form.addEventListener("submit", (event) => {
   }
 });
 
+dateTimeInputs.forEach((input) => {
+  const inputType = input.getAttribute("data-input-type");
+
+  input.addEventListener("focus", () => {
+    input.type = inputType;
+  });
+
+  input.addEventListener("blur", () => {
+    if (!input.value) {
+      input.type = "text";
+    }
+  });
+});
+
 renderCalendar();
+
+renderTable(appointments);
+
+if (updateFilters) {
+  updateFilters.addEventListener("click", filterAppointments);
+}
+
+function setActiveView(viewName) {
+  viewPanels.forEach((panel) => {
+    const isActive = panel.getAttribute("data-view-panel") === viewName;
+    panel.classList.toggle("active", isActive);
+  });
+
+  navItems.forEach((item) => {
+    const isActive = item.getAttribute("data-view") === viewName;
+    item.classList.toggle("active", isActive);
+    item.setAttribute("aria-current", isActive ? "page" : "false");
+  });
+}
+
+navItems.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    event.preventDefault();
+    const viewName = item.getAttribute("data-view");
+    if (viewName) {
+      setActiveView(viewName);
+    }
+  });
+});
 
 if (collapseBtn && sidebar && layout) {
   collapseBtn.addEventListener("click", () => {

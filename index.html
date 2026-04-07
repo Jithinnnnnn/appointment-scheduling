@@ -10,7 +10,7 @@
     <div class="app">
       <header class="topbar">
         <div class="brand">
-          <img src="public\Capmindsimg.png" alt="Capminds" />
+          <img src="public\Capminds logo 4.png" alt="Capminds" />
         </div>
         <button class="primary" id="openModal">+ Book Appointment</button>
       </header>
@@ -19,23 +19,18 @@
         <aside class="sidebar" id="sidebar">
           <button class="collapse" id="collapseBtn" aria-label="Collapse sidebar">&laquo;</button>
           <nav class="nav">
-            <a class="nav-item active" href="#">
+            <a class="nav-item active" href="#" data-view="calendar">
               <span class="nav-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" role="presentation">
-                  <rect x="3" y="4" width="14" height="13" rx="2"></rect>
-                  <path d="M3 7h14"></path>
-                  <path d="M7 3v3M13 3v3"></path>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 22C4.45 22 3.979 21.804 3.587 21.412C3.195 21.02 2.99934 20.5493 3 20V6C3 5.45 3.196 4.979 3.588 4.587C3.98 4.195 4.45067 3.99933 5 4H6V2H8V4H16V2H18V4H19C19.55 4 20.021 4.196 20.413 4.588C20.805 4.98 21.0007 5.45067 21 6V20C21 20.55 20.804 21.021 20.412 21.413C20.02 21.805 19.5493 22.0007 19 22H5ZM5 20H19V10H5V20ZM5 8H19V6H5V8Z" fill="#2C7BE5"/>
                 </svg>
               </span>
               <span class="nav-text">Calendar</span>
             </a>
-            <a class="nav-item" href="#">
+            <a class="nav-item" href="#" data-view="dashboard">
               <span class="nav-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" role="presentation">
-                  <rect x="3" y="3" width="6" height="6" rx="1"></rect>
-                  <rect x="11" y="3" width="6" height="6" rx="1"></rect>
-                  <rect x="3" y="11" width="6" height="6" rx="1"></rect>
-                  <rect x="11" y="11" width="6" height="6" rx="1"></rect>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13 8V4C13 3.71667 13.096 3.47933 13.288 3.288C13.48 3.09667 13.7173 3.00067 14 3H20C20.2833 3 20.521 3.096 20.713 3.288C20.905 3.48 21.0007 3.71733 21 4V8C21 8.28333 20.904 8.521 20.712 8.713C20.52 8.905 20.2827 9.00067 20 9H14C13.7167 9 13.4793 8.904 13.288 8.712C13.0967 8.52 13.0007 8.28267 13 8ZM3 12V4C3 3.71667 3.096 3.47933 3.288 3.288C3.48 3.09667 3.71733 3.00067 4 3H10C10.2833 3 10.521 3.096 10.713 3.288C10.905 3.48 11.0007 3.71733 11 4V12C11 12.2833 10.904 12.521 10.712 12.713C10.52 12.905 10.2827 13.0007 10 13H4C3.71667 13 3.47933 12.904 3.288 12.712C3.09667 12.52 3.00067 12.2827 3 12ZM13 20V12C13 11.7167 13.096 11.4793 13.288 11.288C13.48 11.0967 13.7173 11.0007 14 11H20C20.2833 11 20.521 11.096 20.713 11.288C20.905 11.48 21.0007 11.7173 21 12V20C21 20.2833 20.904 20.521 20.712 20.713C20.52 20.905 20.2827 21.0007 20 21H14C13.7167 21 13.4793 20.904 13.288 20.712C13.0967 20.52 13.0007 20.2827 13 20ZM3 20V16C3 15.7167 3.096 15.4793 3.288 15.288C3.48 15.0967 3.71733 15.0007 4 15H10C10.2833 15 10.521 15.096 10.713 15.288C10.905 15.48 11.0007 15.71733 11 16V20C11 20.2833 10.904 20.521 10.712 20.713C10.52 20.905 10.2827 21.0007 10 21H4C3.71667 21 3.47933 20.904 3.288 20.712C3.09667 20.52 3.00067 20.2827 3 20ZM5 11H9V5H5V11ZM15 19H19V13H15V19ZM15 7H19V5H15V7ZM5 19H9V17H5V19Z" fill="#2E2E2E" fill-opacity="0.5"/>
                 </svg>
               </span>
               <span class="nav-text">Dashboard</span>
@@ -44,11 +39,16 @@
         </aside>
 
         <main class="content">
-          <section class="calendar-card">
+          <section class="calendar-card view active" id="calendarView" data-view-panel="calendar">
             <div class="calendar-header">
               <div class="nav-left">
                 <button class="icon" id="prevMonth" aria-label="Previous month">&#8249;</button>
-                <div class="month" id="monthLabel">January 2023</div>
+                <div class="month" id="monthLabel">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M3.33333 14.6667C2.96667 14.6667 2.65267 14.536 2.39133 14.2747C2.13 14.0134 1.99956 13.6996 2 13.3334V4.00004C2 3.63337 2.13067 3.31937 2.392 3.05804C2.65333 2.79671 2.96711 2.66626 3.33333 2.66671H4V1.33337H5.33333V2.66671H10.6667V1.33337H12V2.66671H12.6667C13.0333 2.66671 13.3473 2.79737 13.6087 3.05871C13.87 3.32004 14.0004 3.63382 14 4.00004V13.3334C14 13.7 13.8693 14.014 13.608 14.2754C13.3467 14.5367 13.0329 14.6672 12.6667 14.6667H3.33333ZM3.33333 13.3334H12.6667V6.66671H3.33333V13.3334ZM3.33333 5.33337H12.6667V4.00004H3.33333V5.33337Z" fill="#2E2E2E"/>
+                  </svg>
+                  <span class="month-text">January 2023</span>
+                </div>
                 <button class="icon" id="nextMonth" aria-label="Next month">&#8250;</button>
               </div>
               <div class="nav-right">
@@ -58,6 +58,8 @@
                 </select>
               </div>
             </div>
+
+            <div class="calendar-subtitle">James Marry</div>
 
 
             <div class="calendar-grid">
@@ -72,6 +74,66 @@
 
             <div class="calendar-days" id="calendarDays" aria-live="polite"></div>
           </section>
+          <section class="dashboard-card view" id="dashboardView" data-view-panel="dashboard" aria-label="Dashboard">
+            <h2 class="dashboard-title">Practice Dashboard</h2>
+            <div class="dashboard-body">
+              <div class="dashboard-filters">
+                <label class="filter-field">
+                  <span class="filter-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img" aria-label="Search">
+                      <circle cx="11" cy="11" r="6.5" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                      <path d="M16.2 16.2L21 21" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                    </svg>
+                  </span>
+                  <input type="text" id="patientSearch" placeholder="Patient Search" aria-label="Patient Search" />
+                </label>
+                <label class="filter-field">
+                  <span class="filter-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img" aria-label="Search">
+                      <circle cx="11" cy="11" r="6.5" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                      <path d="M16.2 16.2L21 21" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                    </svg>
+                  </span>
+                  <input type="text" id="doctorSearch" placeholder="Doctor Search" aria-label="Doctor Search" />
+                </label>
+                <label class="filter-field">
+                  <span class="filter-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img" aria-label="Date">
+                      <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                      <path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                    </svg>
+                  </span>
+                  <input type="date" id="startDate" aria-label="Start Date" value="2026-04-01" />
+                </label>
+                <label class="filter-field">
+                  <span class="filter-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img" aria-label="Date">
+                      <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                      <path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" fill="none" stroke-width="1.6"/>
+                    </svg>
+                  </span>
+                  <input type="date" id="endDate" aria-label="End Date" value="2026-04-01" />
+                </label>
+                <button class="filter-button" id="updateFilters" type="button">Update</button>
+              </div>
+
+              <div class="appointments">
+                <div class="appointments-title">Appointment Details</div>
+                <header class="appointments-header" role="row">
+                  <div role="columnheader">Patient</div>
+                  <div role="columnheader">Doctor</div>
+                  <div role="columnheader">Hospital</div>
+                  <div role="columnheader">Specialty</div>
+                  <div role="columnheader">Select Date</div>
+                  <div role="columnheader">Select Time</div>
+                  <div role="columnheader" class="appointments-empty"></div>
+                  <div role="columnheader" class="appointments-empty"></div>
+                  <div role="columnheader" class="appointments-actions">Action</div>
+                </header>
+                <div class="appointments-body" id="appointmentsBody" role="rowgroup"></div>
+              </div>
+            </div>
+          </section>
         </main>
       </div>
     </div>
@@ -84,118 +146,238 @@
         </div>
         <form id="appointmentForm" novalidate>
           <div class="row">
-            <label>
-              Patient Name
+            <label> 
               <div class="field has-end">
                 <span class="field-icon" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <circle cx="10" cy="6" r="3"></circle>
-                    <path d="M4 16c0-2.8 2.7-5 6-5s6 2.2 6 5"></path>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_60_223)">
+                      <path
+                        d="M14.1666 17.5V15.8333C14.1666 14.9493 13.8154 14.1014 13.1903 13.4763C12.5652 12.8512 11.7173 12.5 10.8333 12.5H4.16659C3.28253 12.5 2.43468 12.8512 1.80956 13.4763C1.18444 14.1014 0.833252 14.9493 0.833252 15.8333V17.5"
+                        stroke="#2E2E2E"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M7.50008 9.16667C9.34103 9.16667 10.8334 7.67428 10.8334 5.83333C10.8334 3.99238 9.34103 2.5 7.50008 2.5C5.65913 2.5 4.16675 3.99238 4.16675 5.83333C4.16675 7.67428 5.65913 9.16667 7.50008 9.16667Z"
+                        stroke="#2E2E2E"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M19.1667 17.4999V15.8333C19.1662 15.0947 18.9204 14.3773 18.4679 13.7935C18.0154 13.2098 17.3819 12.7929 16.6667 12.6083"
+                        stroke="#2E2E2E"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M13.3333 2.60828C14.0503 2.79186 14.6858 3.20886 15.1396 3.79353C15.5935 4.37821 15.8398 5.0973 15.8398 5.83744C15.8398 6.57758 15.5935 7.29668 15.1396 7.88135C14.6858 8.46603 14.0503 8.88303 13.3333 9.06661"
+                        stroke="#2E2E2E"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_60_223">
+                        <rect width="20" height="20" fill="white" />
+                      </clipPath>
+                    </defs>
                   </svg>
                 </span>
                 <input type="text" name="patientName" placeholder="Patient Name" required />
-                <span class="field-icon end" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <path d="M6 8l4 4 4-4"></path>
-                  </svg>
-                </span>
               </div>
               <span class="error" data-error-for="patientName"></span>
             </label>
+
             <label>
-              Doctor Name
               <div class="field has-end">
                 <span class="field-icon" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <circle cx="10" cy="6" r="3"></circle>
-                    <path d="M4 16c0-2.8 2.7-5 6-5s6 2.2 6 5"></path>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_60_250)">
+                      <path
+                        d="M14.1666 17.5V15.8333C14.1666 14.9493 13.8154 14.1014 13.1903 13.4763C12.5652 12.8512 11.7173 12.5 10.8333 12.5H4.16659C3.28253 12.5 2.43468 12.8512 1.80956 13.4763C1.18444 14.1014 0.833252 14.9493 0.833252 15.8333V17.5"
+                        stroke="#2E2E2E"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M7.50008 9.16667C9.34103 9.16667 10.8334 7.67428 10.8334 5.83333C10.8334 3.99238 9.34103 2.5 7.50008 2.5C5.65913 2.5 4.16675 3.99238 4.16675 5.83333C4.16675 7.67428 5.65913 9.16667 7.50008 9.16667Z"
+                        stroke="#2E2E2E"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M19.1667 17.4999V15.8333C19.1662 15.0947 18.9204 14.3773 18.4679 13.7935C18.0154 13.2098 17.3819 12.7929 16.6667 12.6083"
+                        stroke="#2E2E2E"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M13.3333 2.60828C14.0503 2.79186 14.6858 3.20886 15.1396 3.79353C15.5935 4.37821 15.8398 5.0973 15.8398 5.83744C15.8398 6.57758 15.5935 7.29668 15.1396 7.88135C14.6858 8.46603 14.0503 8.88303 13.3333 9.06661"
+                        stroke="#2E2E2E"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_60_250">
+                        <rect width="20" height="20" fill="white" />
+                      </clipPath>
+                    </defs>
                   </svg>
                 </span>
                 <input type="text" name="doctorName" placeholder="Doctor Name" required />
-                <span class="field-icon end" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <path d="M6 8l4 4 4-4"></path>
-                  </svg>
-                </span>
               </div>
               <span class="error" data-error-for="doctorName"></span>
             </label>
           </div>
           <div class="row">
             <label>
-              Hospital Name
+              
               <div class="field has-end">
                 <span class="field-icon" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <path d="M10 3c-2.2 0-4 1.8-4 4 0 3.2 4 7 4 7s4-3.8 4-7c0-2.2-1.8-4-4-4z"></path>
-                    <circle cx="10" cy="7" r="1.5"></circle>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_60_233)">
+                      <path
+                        d="M10.0001 1.66663C6.77508 1.66663 4.16675 4.27496 4.16675 7.49996C4.16675 8.94996 4.58341 10.3083 5.34175 11.5333C6.13341 12.8166 7.17508 13.9166 7.97508 15.2C8.36675 15.825 8.65008 16.4083 8.95008 17.0833C9.16675 17.5416 9.34175 18.3333 10.0001 18.3333C10.6584 18.3333 10.8334 17.5416 11.0417 17.0833C11.3501 16.4083 11.6251 15.825 12.0167 15.2C12.8167 13.925 13.8584 12.825 14.6501 11.5333C15.4167 10.3083 15.8334 8.94996 15.8334 7.49996C15.8334 4.27496 13.2251 1.66663 10.0001 1.66663ZM10.0001 9.79163C8.85008 9.79163 7.91675 8.85829 7.91675 7.70829C7.91675 6.55829 8.85008 5.62496 10.0001 5.62496C11.1501 5.62496 12.0834 6.55829 12.0834 7.70829C12.0834 8.85829 11.1501 9.79163 10.0001 9.79163Z"
+                        fill="#2E2E2E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_60_233">
+                        <rect width="20" height="20" fill="white" />
+                      </clipPath>
+                    </defs>
                   </svg>
                 </span>
                 <input type="text" name="hospitalName" placeholder="Hospital Name" required />
-                <span class="field-icon end" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <path d="M6 8l4 4 4-4"></path>
-                  </svg>
-                </span>
               </div>
               <span class="error" data-error-for="hospitalName"></span>
             </label>
             <label>
-              Specialty
+            
               <div class="field has-end">
                 <span class="field-icon" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <path d="M8 3h4v3h3v4h-3v3H8v-3H5V6h3z"></path>
-                    <circle cx="10" cy="16" r="2"></circle>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_60_241a)">
+                      <path
+                        d="M6.21903 6.74834L6.35237 6.73834C6.40064 6.73367 6.44681 6.71849 6.48665 6.69417L6.4857 6.69501C6.61332 7.08001 6.76951 7.48501 6.96475 7.90917C7.21522 8.46417 7.46189 8.92001 7.73808 9.36001L7.69999 9.29334C7.67713 9.59667 7.64951 9.90834 7.61332 10.21C7.59746 10.388 7.55619 10.5635 7.49046 10.7325L7.49522 10.7175C7.4838 10.7217 7.4676 12.4508 7.4676 12.4508C7.46796 12.9874 7.67462 13.5082 8.05433 13.9295C8.43405 14.3508 8.96472 14.648 9.56094 14.7733L9.57999 14.7767C9.60646 14.7165 9.65309 14.6647 9.71376 14.6282C9.77443 14.5916 9.84631 14.5719 9.91999 14.5717H10.4667C10.5397 14.5725 10.6108 14.5922 10.6711 14.6282C10.7314 14.6642 10.7782 14.715 10.8057 14.7742L10.8067 14.7767C11.4079 14.6551 11.9447 14.3594 12.3299 13.9376C12.7152 13.5158 12.9265 12.9925 12.9295 12.4525C12.9295 12.4525 12.8962 10.73 12.879 10.7183C12.8223 10.5573 12.7834 10.3918 12.7628 10.2242L12.7619 10.2117C12.7286 9.90834 12.7067 9.60417 12.6752 9.295C12.9105 8.92334 13.1571 8.46834 13.3743 7.99917L13.4105 7.91084C13.6057 7.48667 13.7571 7.08251 13.8895 6.69667C13.9286 6.72098 13.9742 6.73618 14.0219 6.74084H14.0228L14.1571 6.75084C14.319 6.76584 14.4619 6.64917 14.4752 6.46834L14.62 4.85917V4.8575C14.6199 4.79275 14.5929 4.73023 14.544 4.68163C14.4951 4.63302 14.4277 4.60163 14.3543 4.59334H14.3362C14.463 3.75541 14.3844 2.90346 14.1057 2.09417L14.1181 2.13667C13.8495 1.61477 13.4409 1.15727 12.9271 0.803007C12.4133 0.448739 11.8094 0.208155 11.1667 0.101672L11.1419 0.0983382C10.8303 0.0436699 10.5139 0.0124448 10.1962 0.00500488H10.1762C9.84383 0.0102125 9.51281 0.0431393 9.1876 0.103338L9.22189 0.0983382C8.57949 0.202672 7.975 0.440137 7.45902 0.790855C6.94305 1.14157 6.53059 1.59534 6.25618 2.11417L6.2457 2.13667C5.97151 2.94284 5.89843 3.79115 6.03141 4.62417L6.0276 4.59334C5.95401 4.60031 5.88594 4.63076 5.83639 4.67888C5.78685 4.727 5.75931 4.7894 5.75903 4.85417V4.86L5.9038 6.46917C5.91713 6.65417 6.06189 6.76584 6.21808 6.75084L6.21903 6.74834Z"
+                        fill="black"
+                      />
+                      <path
+                        d="M20.3965 17.3983C20.3298 14.865 20.0403 14.2916 19.8841 13.9033C19.8222 13.7475 19.7717 12.6941 17.7832 12.0108C16.5641 11.5908 14.9908 11.5825 13.6593 11.09V12.46C13.658 13.1623 13.3775 13.8424 12.8659 14.3836C12.3544 14.9249 11.6437 15.2936 10.8555 15.4266L10.8336 15.43C10.8194 15.5039 10.7759 15.5711 10.7108 15.6198C10.6457 15.6685 10.5631 15.6957 10.4774 15.6966H10.4603V16.73C10.4603 17.2149 10.6804 17.6799 11.0723 18.0228C11.4642 18.3657 11.9956 18.5583 12.5498 18.5583C13.104 18.5583 13.6355 18.3657 14.0273 18.0228C14.4192 17.6799 14.6393 17.2149 14.6393 16.73V16.0083C14.3517 15.9714 14.0895 15.8435 13.9024 15.6489C13.7152 15.4543 13.616 15.2064 13.6236 14.9521C13.6312 14.6978 13.7451 14.4548 13.9436 14.269C14.1422 14.0832 14.4117 13.9675 14.7011 13.9438C14.9905 13.9201 15.2799 13.9901 15.5144 14.1404C15.7488 14.2908 15.9122 14.5111 15.9736 14.7598C16.0349 15.0084 15.9901 15.2681 15.8474 15.4897C15.7047 15.7113 15.4742 15.8795 15.1993 15.9625L15.1908 15.965V16.7691C15.1908 17.3822 14.9124 17.9702 14.417 18.4037C13.9215 18.8373 13.2495 19.0808 12.5489 19.0808C11.8482 19.0808 11.1762 18.8373 10.6808 18.4037C10.1853 17.9702 9.90696 17.3822 9.90696 16.7691V16.7275V16.7291V15.6866C9.82541 15.6818 9.74812 15.653 9.68762 15.6049C9.62712 15.5568 9.58696 15.4922 9.57363 15.4216V15.42C8.78462 15.2883 8.07249 14.9207 7.55923 14.38C7.04597 13.8394 6.76353 13.1595 6.7603 12.4566V11.0758C5.42315 11.5783 3.8403 11.5883 2.61458 12.0091C0.620295 12.6916 0.574581 13.7425 0.513629 13.9008C0.361248 14.2908 0.0679146 14.8616 0.00124792 17.3966C-0.0101807 17.73 0.00124797 18.2408 1.14982 18.6875C3.65077 19.5458 6.87268 19.8125 10.0489 20.0041H10.3536C13.5365 19.8141 16.7536 19.5483 19.2527 18.6875C20.3965 18.2433 20.407 17.735 20.3965 17.3983ZM6.41458 16.365H5.22791V17.4075H4.3803V16.3683H3.19363V15.6266H4.3803V14.5883H5.22791V15.6266H6.41458V16.365Z"
+                        fill="black"
+                      />
+                      <path
+                        d="M15.4523 14.9708C15.4522 14.8221 15.3846 14.6787 15.2643 14.5736C15.1441 14.4685 14.9811 14.4095 14.8111 14.4095C14.6412 14.4096 14.4782 14.4687 14.3581 14.5739C14.2379 14.6791 14.1704 14.8217 14.1704 14.9704C14.1704 15.1191 14.2379 15.2617 14.3581 15.3669C14.4782 15.472 14.6412 15.5312 14.8111 15.5312C14.9811 15.5313 15.1441 15.4723 15.2643 15.3672C15.3846 15.2621 15.4522 15.1195 15.4523 14.9708Z"
+                        fill="black"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_60_241a">
+                        <rect width="20" height="20" fill="white" />
+                      </clipPath>
+                    </defs>
                   </svg>
                 </span>
                 <input type="text" name="specialty" placeholder="Specialty" required />
-                <span class="field-icon end" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <path d="M6 8l4 4 4-4"></path>
-                  </svg>
-                </span>
               </div>
               <span class="error" data-error-for="specialty"></span>
             </label>
           </div>
           <div class="row">
             <label>
-              Select Date
               <div class="field has-end">
                 <span class="field-icon" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <rect x="3" y="4" width="14" height="13" rx="2"></rect>
-                    <path d="M3 7h14"></path>
-                    <path d="M7 3v3M13 3v3"></path>
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 17 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 14.1667C0 15.5833 1.08333 16.6667 2.5 16.6667H14.1667C15.5833 16.6667 16.6667 15.5833 16.6667 14.1667V7.5H0V14.1667ZM14.1667 1.66667H12.5V0.833333C12.5 0.333333 12.1667 0 11.6667 0C11.1667 0 10.8333 0.333333 10.8333 0.833333V1.66667H5.83333V0.833333C5.83333 0.333333 5.5 0 5 0C4.5 0 4.16667 0.333333 4.16667 0.833333V1.66667H2.5C1.08333 1.66667 0 2.75 0 4.16667V5.83333H16.6667V4.16667C16.6667 2.75 15.5833 1.66667 14.1667 1.66667Z"
+                      fill="black"
+                    />
                   </svg>
                 </span>
-                <input type="date" name="appointmentDate" required />
-                <span class="field-icon end" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <rect x="3" y="4" width="14" height="13" rx="2"></rect>
-                    <path d="M3 7h14"></path>
-                  </svg>
-                </span>
+                <input
+                  type="text"
+                  name="appointmentDate"
+                  placeholder="Select Date"
+                  data-input-type="date"
+                  required
+                />
               </div>
               <span class="error" data-error-for="appointmentDate"></span>
             </label>
+
             <label>
-              Select Time
               <div class="field has-end">
                 <span class="field-icon" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <circle cx="10" cy="10" r="7"></circle>
-                    <path d="M10 6v5l3 2"></path>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_60_267)">
+                      <path
+                        d="M9.99175 1.66663C5.39175 1.66663 1.66675 5.39996 1.66675 9.99996C1.66675 14.6 5.39175 18.3333 9.99175 18.3333C14.6001 18.3333 18.3334 14.6 18.3334 9.99996C18.3334 5.39996 14.6001 1.66663 9.99175 1.66663ZM10.0001 16.6666C6.31675 16.6666 3.33341 13.6833 3.33341 9.99996C3.33341 6.31663 6.31675 3.33329 10.0001 3.33329C13.6834 3.33329 16.6667 6.31663 16.6667 9.99996C16.6667 13.6833 13.6834 16.6666 10.0001 16.6666Z"
+                        fill="#2E2E2E"
+                      />
+                      <path
+                        d="M10.4167 5.83337H9.16675V10.8334L13.5417 13.4584L14.1667 12.4334L10.4167 10.2084V5.83337Z"
+                        fill="#2E2E2E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_60_267">
+                        <rect width="20" height="20" fill="white" />
+                      </clipPath>
+                    </defs>
                   </svg>
                 </span>
-                <input type="time" name="appointmentTime" required />
-                <span class="field-icon end" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" role="presentation">
-                    <circle cx="10" cy="10" r="7"></circle>
-                    <path d="M10 6v5l3 2"></path>
-                  </svg>
-                </span>
+                <input
+                  type="text"
+                  name="appointmentTime"
+                  placeholder="Select Time"
+                  data-input-type="time"
+                  required
+                />
               </div>
               <span class="error" data-error-for="appointmentTime"></span>
             </label>
