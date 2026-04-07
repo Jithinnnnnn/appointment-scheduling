@@ -59,15 +59,13 @@ function renderTable(data) {
     .map(
       (item) => `
         <div class="appointments-row" role="row">
-          <div role="cell">${item.patient}</div>
-          <div role="cell">${item.doctor}</div>
-          <div role="cell">${item.hospital}</div>
-          <div role="cell">${item.specialty}</div>
-          <div role="cell">${item.date}</div>
-          <div role="cell">${item.time}</div>
-          <div role="cell">&nbsp;</div>
-          <div role="cell">&nbsp;</div>
-          <div role="cell" class="appointments-actions">
+          <div role="cell" data-label="Patient">${item.patient}</div>
+          <div role="cell" data-label="Doctor">${item.doctor}</div>
+          <div role="cell" data-label="Hospital">${item.hospital}</div>
+          <div role="cell" data-label="Specialty">${item.specialty}</div>
+          <div role="cell" data-label="Select Date">${item.date}</div>
+          <div role="cell" data-label="Select Time">${item.time}</div>
+          <div role="cell" data-label="Action" class="appointments-actions">
             <button class="icon-btn icon-btn--edit" type="button" aria-label="Edit appointment">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 20h4l10-10-4-4L4 16v4z" stroke="currentColor" fill="none" stroke-width="1.6"/>
@@ -93,15 +91,13 @@ function renderTable(data) {
     .map(
       () => `
         <div class="appointments-row appointments-row--empty" role="row">
-          <div role="cell">&nbsp;</div>
-          <div role="cell">&nbsp;</div>
-          <div role="cell">&nbsp;</div>
-          <div role="cell">&nbsp;</div>
-          <div role="cell">&nbsp;</div>
-          <div role="cell">&nbsp;</div>
-          <div role="cell">&nbsp;</div>
-          <div role="cell">&nbsp;</div>
-          <div role="cell" class="appointments-actions">&nbsp;</div>
+          <div role="cell" data-label="Patient">&nbsp;</div>
+          <div role="cell" data-label="Doctor">&nbsp;</div>
+          <div role="cell" data-label="Hospital">&nbsp;</div>
+          <div role="cell" data-label="Specialty">&nbsp;</div>
+          <div role="cell" data-label="Select Date">&nbsp;</div>
+          <div role="cell" data-label="Select Time">&nbsp;</div>
+          <div role="cell" data-label="Action" class="appointments-actions">&nbsp;</div>
         </div>
       `
     )
