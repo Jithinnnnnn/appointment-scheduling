@@ -385,6 +385,11 @@ body {
 
 .appointments-row--empty {
   color: transparent;
+  height: 31px;
+}
+
+.appointments-row--match {
+  background: #d7f5dc;
 }
 
 .appointments-row--empty .appointments-actions {
@@ -589,12 +594,12 @@ body {
 
 .nav-right {
   display: flex;
-  align-items: center;
-  gap: 8px;
-}
+  padding: 4px 6px;
+  font-size: 10px;
+  line-height: 1.1;
 
-.month {
-  display: inline-flex;
+  display: flex;
+  align-items: center;
   align-items: center;
   gap: 10px;
   width: 160px;
@@ -760,23 +765,67 @@ body {
   border-width: 2px 1px 0 0;
   border-color: #138808;
   border-top-right-radius: 4px;
-  padding: 6px 8px;
-  font-size: 10px;
-  line-height: 1.2;
+  position: relative;
+  padding: 4px 6px 4px 6px;
+  padding-right: 52px;
+  padding-bottom: 16px;
+  font-size: 9px;
+  line-height: 1.15;
   color: #1f2933;
+  display: block;
+}
+
+.day-event-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 2px;
+  align-items: flex-start;
+  gap: 1px;
 }
 
+.event-patient,
+.event-doctor,
 .event-time {
-  font-weight: 700;
-  color: #0b5d05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
-.event-meta {
-  color: #4b5563;
+.event-patient {
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.event-doctor,
+.event-time {
+  color: #2e2e2e;
+}
+
+.day-event-actions {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.day-event-btn {
+  width: 16px;
+  height: 15px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.day-event-btn svg {
+  width: 16px;
+  height: 15px;
+  display: block;
 }
 
 .modal {
