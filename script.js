@@ -44,16 +44,7 @@ const seedAppointments = [
     time: "09:00",
     reason: "",
   },
-  {
-    id: "seed-2",
-    patient: "Henry James",
-    doctor: "James Marry",
-    hospital: "Ultracare (General Hospital)",
-    specialty: "Dermatology",
-    date: "2026-04-21",
-    time: "13:30",
-    reason: "",
-  },
+ 
 ];
 
 let appointments = loadAppointments();
