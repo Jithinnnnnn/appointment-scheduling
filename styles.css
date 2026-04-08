@@ -706,6 +706,9 @@ body {
   color: var(--text);
   position: relative;
   background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .day.muted {
@@ -728,6 +731,52 @@ body {
   height: 6px;
   border-radius: 999px;
   background: var(--primary);
+}
+
+.day-number {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.day.muted .day-number {
+  color: #9ca3af;
+}
+
+.day-events {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 84px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.day-event {
+  width: 176px;
+  height: 44px;
+  background: #70c979;
+  border-style: solid;
+  border-width: 2px 1px 0 0;
+  border-color: #138808;
+  border-top-right-radius: 4px;
+  padding: 6px 8px;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #1f2933;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.event-time {
+  font-weight: 700;
+  color: #0b5d05;
+}
+
+.event-meta {
+  color: #4b5563;
 }
 
 .modal {
